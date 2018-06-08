@@ -166,7 +166,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css|.less$/,
+            test: /\.(css|less)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -183,12 +183,6 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
-                      },
-                    },
-                    {
-                      loader: require.resolve('less-loader'),
-                      options: {
-                        javascriptEnabled: false,
                       },
                     },
                     {
@@ -211,6 +205,7 @@ module.exports = {
                         ],
                       },
                     },
+                    { loader: 'less-loader', options: { javascriptEnabled: true } }
                   ],
                 },
                 extractTextPluginOptions
