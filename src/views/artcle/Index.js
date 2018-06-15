@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import {getArtcles, addArtcle } from '../../redux/actions'
 import { asyncAddArtcle } from '../../redux/saga/artcle'
 import  ArtcleTable  from '../../components/artcle/ArtcleTable'
-import Input from '../../components/artcle/input'
-import { fromJS } from '../../../../../../../Library/Caches/typescript/2.8/node_modules/immutable';
+import {Button} from 'antd'
+import { fromJS } from 'immutable';
 
 
 //var test;
@@ -25,10 +25,11 @@ class Artcle extends React.Component{
     let { artcles }=this.props;
     return(
       <div className="auth-page">
-            <div>
-                文章页面
+            <div className="page-header">
+                <div className="auth-left">文章列表</div>
+                <Button>新增文章</Button>
             </div>
-           <button onClick={()=>{this.addArtcle()}}>新增</button>
+           
             <div>
                 <ArtcleTable data={ artcles }/>
             </div>

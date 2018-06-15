@@ -8,7 +8,7 @@ function Login({ form: { getFieldDecorator, validateFieldsAndScroll, } }) {
         validateFieldsAndScroll((errors, values) => {
             if (!errors) {
                 //alert('登录成功');
-                let userInfo={auth:["user",'userlist','artcle','artcleManage','chart','chartArtcle']};
+                let userInfo={auth:["user",'userlist','artcle','artcleManage','chart','chartArtcle','column','columnManage']};
                 userInfo.isLogin=true;
                 sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
                 window.location.reload();

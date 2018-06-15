@@ -25,6 +25,19 @@ export const notFound = Loadable({ loader: () => import('../views/exception/NotF
             },
         }
      },
+     'column':{
+        'icon': 'profile',
+        'name': '栏目管理',
+        'authKey': 'column',
+        'children':{
+            'columnTree': {
+                'name': '栏目管理',
+                'path': '/columnTree',
+                'component': Loadable({ loader: () => import('../views/column/Index'), loading: Loading, }),
+                'authKey': 'columnManage',
+            },
+        }
+     },
      'artcle':{
         'icon': 'profile',
         'name': '文章管理',

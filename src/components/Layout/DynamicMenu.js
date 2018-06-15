@@ -5,6 +5,7 @@ const SubMenu = Menu.SubMenu;
 
 function getMenus(path) {
     let menus = [];
+    let selectsub='';
     let systemMenu = window.systemMenu;
     systemMenu.childrenAuthKeys.map(moduleKey => {
         let currentItem = systemMenu[moduleKey]
@@ -12,6 +13,9 @@ function getMenus(path) {
             <SubMenu key={moduleKey} title={<span><Icon type={currentItem.icon} /><span>{currentItem.name}</span></span>}>
                 {
                     currentItem.children.childrenAuthKeys.map(key => {
+                         if(('/' + key)===path){
+                            selectsub=moduleKey;
+                         }
                         return (
                             <Menu.Item key={'/' + key}>
                                 <Link to={'/' + key} replace={('/' + key)===path}>
@@ -24,16 +28,16 @@ function getMenus(path) {
             </SubMenu>;
         menus.push(subMenuItem);
     })
-    return menus;
+    return {menus,selectsub};
 }
 
 function DynamicMenu(props) {
     //{'key':'artcles','name':'文章'},{'key':'users','name':'权限'},{'key':'artcleChart','name':'报表'},
-  
-    let menus = getMenus(props.path)
+
+    let {menus,selectsub} = getMenus(props.path)
 
     return (
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[props.path]}>
+        <Menu theme="dark" mode="inline" defaultOpenKeys={[selectsub]} defaultSelectedKeys={[props.path]}>
             {
                 menus.map(menu => (
                     menu

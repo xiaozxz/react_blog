@@ -6,7 +6,6 @@ function Index(props) {
   let obj=fromJS({name:'zxz',age:28,attr:['name','age']});
   let obj1=fromJS({name:'zxz',age:28,attr:['name','age']});
   let obj5=obj1;
-  debugger
   let c=is(obj,obj1);
   obj=obj.update('name',value=>'test');
   let obj2=obj.set('attr',Map({'foot':2}));
@@ -15,8 +14,6 @@ function Index(props) {
   let res=obj3==obj;
 
   let list = List([ obj, obj2 ]);
- window.listObject = fromJS([ {name:'zxz',age:28}, {name:'zhou',age:28}, {name:'new',age:28}, ]);
- window.object=fromJS({name:'test',attr:[{footer:2}]})
    //let rest =  List([ obj, ibj2 ]);
    let data={children:[]}
   return(
